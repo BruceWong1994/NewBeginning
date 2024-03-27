@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <style>
+            #common div{
+                margin:30px 0;
+                background:#ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="common">
+            <p>常用API: </p>
+            <div>
+                1. 转为字符串: （数组）
+                    1. String(arr): 输出数组的每个元素值，用逗号分隔
+                    2. arr.join("分隔符"): 输出数组的每个元素值，用指定"分隔符"分隔。
+	                    如果join中省略分隔符，则join等效于String
+                        比如: 单词拼成句子: words.join(" ")
+                        字符拼成单词: words.join("");
+                        固定套路: 频繁的字符串拼接会浪费内存
+                        解决：将字符串换为数组，将拼接换为在数组末尾追加新元素。在拼接完数组后，使用join("")将数组拼接成想要的字符串
+            </div>
+            <div>
+                2. 连接和截取: （数组、字符串）
+                    1. 连接: 将两个数组拼接为一个新数组或者将多个元素，追加到数组结尾，生成新数组
+                    var newArr=arr1.concat(arr2);//将arr1的元素和arr2的元素相拼接，保存在newArr里
+           
+ 	                等价于var newArr=arr1.concat(值1,值2,arr2,值3,...)
+	                强调: concat会自动打散参数中的数组，以单个元素形式拼接到新数组中。
+
+                    2. 截取: 选取开始位置到结束位置之间的子数组
+                     var subArr=arr.slice(starti,endi+1);
+                    意为: 截取arr中starti位置开始到endi位置之间的子元素组成的子数组。
+	                注意: 含头不含尾
+
+            <p style="color:red;">********连接concat 和 截取slice 都不会修改原数组，只会返回一个新数组（需要赋值给新的变量）*********</p>
+            </div>
+            <div>
+                3. splice: 删除，插入，替换（数组）
+                删除: arr.splice(starti,n)
+                      删除arr中starti位置开始的n个元素
+                      直接删除arr中的元素
+                  var deleted=arr.splice(starti,n);// 可得到被删除的部分
+                      如果被删除的元素不想要了，可省略赋值部分
+                插入: arr.splice(starti,0,值1,arr2,....)
+                  在arr中starti位置插入值1或arr2中的元素
+                      原starti位置及其之后的元素被向后顺移
+                      splice也有打散数组参数的功能
+                替换: arr.splice(starti,n,值1,arr2,....)
+                  在arr中先删除starti位置开始的n个元素，再在starti位置插入新元素。
+            </div>
+            <div>
+                4. 颠倒数组: arr.reverse();
+            </div>
+            <div>
+                5.排序：arr.sort();
+                比较器：function compare(a,b){
+                    return a-b;
+                }
+                <p style="color:red;">用法：arr.sort(比较器函数)</p>
+            </div>
+            <div>
+                6.出入栈：
+                (1). 从结尾出入栈
+	  入栈(压栈): arr.push(值1,值2,...)
+	     不支持数组参数
+          出栈(弹栈): var last=arr.pop();
+          好处: 无论出入栈都不改变剩余元素的位置
+       (2). 从开头出入栈
+	  入栈: arr.unshift(值1,值2,...)
+	     unshift入栈的顺序值从右向左读取参数
+          出栈: var first=arr.shift();
+          缺点: 每次出入栈都会导致其余元素的位置改变
+            </div>
+        </div>
+        <script src="./common_api.js"></script>
+    </body>
+</html>
